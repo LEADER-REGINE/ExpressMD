@@ -1,5 +1,5 @@
-import styled from 'styled-components/native'
-import {View , Text , Image , TextInput ,TouchableOpacity} from 'react-native'
+import styled from 'styled-components'
+import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native'
 import Constansts from 'expo-constants'
 
 
@@ -10,19 +10,19 @@ const StatusBarHeight = Constansts.statusBarHeight;
 //colors
 
 export const Colors = {
-    primary : "#ffffff",
-    secondary : "#E5E7EB",
-    tertiary : "#1F2937",
-    darklight : "#9CA3AF",
-    brand : "#6D28D9",
-    green : "#10B981",
-    red : "#EF4444",
-    title :"#000000",
-    button1 : "#16C2D5",
-    button2 : "#167694"
+    primary: "#ffffff",
+    secondary: "#E5E7EB",
+    tertiary: "#1F2937",
+    darklight: "#9CA3AF",
+    brand: "#6D28D9",
+    green: "#10B981",
+    red: "#EF4444",
+    title: "#000000",
+    button1: "#16C2D5",
+    button2: "#167694"
 }
 
-const { primary , secondary , tertiary , darklight , brand , green , red , title , button1 ,button2 } = Colors;
+const { primary, secondary, tertiary, darklight, brand, green, red, title, button1, button2 } = Colors;
 
 
 export const StyledContainer = styled.View`
@@ -53,11 +53,12 @@ export const PageTitle = styled.Text`
 `;
 
 export const SubTitle = styled.Text`
-    font-size : 18px ;
+    font-size : 50px ;
     margin-top : 20px ;
-    letter-spacing : 1px ;
-    font-weight : bold ;
-    color : ${tertiary};
+    letter-spacing : 2px ;
+    font-weight : 100 ;
+    color : #808080;
+    margin-left : -185px ;
 `;
 
 export const StyledFormArea = styled.View`
@@ -66,7 +67,6 @@ export const StyledFormArea = styled.View`
 `;
 
 export const StyledTextInput = styled.TextInput`
-    background-color : ${secondary};
     padding : 15px ;
     padding-left : 10px ;
     padding-right : 55px ;
@@ -111,6 +111,8 @@ export const StyledBotton = styled.TouchableOpacity`
     height : 55px ;
 `;
 
+
+
 export const StyledCreateBotton = styled.TouchableOpacity`
     margin-top : 50px ;
     padding : 15px ;
@@ -125,4 +127,19 @@ export const ButtonText = styled.Text`
     color : ${primary};
     font-size : 16px ;
     text-align : center;
+`;
+
+export const MsgBox = styled.Text`
+    text-align : center ;
+    font-size : 13px ; 
+    letter-spacing : 1px ;
+
+`;
+
+export const Line = styled.View`
+    height : 1px ;
+    width : 100% ;
+    background-color : ${darklight};
+    margin-top : -18px;
+
 `;

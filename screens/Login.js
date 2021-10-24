@@ -9,14 +9,15 @@ import {
     PageTitle,
     SubTitle,
     StyledFormArea,
-    LeftIcon,
     StyledInputLabel,
     StyledTextInput,
     RightIcon,
     Colors,
     StyledBotton,
     ButtonText,
-    StyledCreateBotton
+    MsgBox,
+    Line,
+    LeftIcon
 } from '../components/styles'
 import { View } from 'react-native'
 //icons
@@ -40,6 +41,7 @@ const Login = () => {
         }
     };
     return (
+
         <StyledContainer>
             <StatusBar style="dark" />
             <InnerContainer style={{
@@ -48,55 +50,53 @@ const Login = () => {
                 alignItems: 'center',
                 flex: 0.5,
             }}>
-                <PageLogo resizeMode="cover" source={require('../assets/Untitled-1.png')} style={{
-
-                }} />
-                <PageTitle>Find Doctor Easier</PageTitle>
                 <SubTitle style={{
-                    marginTop: 40,
-                }}>Account Login</SubTitle>
+                    marginTop: 10,
+                    marginBottom: 100,
+                }}>Login</SubTitle>
 
                 <Formik
                     initialValues={{ email: "", password: "", }}
-                    onSubmit={(values) => {
-                        console.log(values)
-                    }}
-                >{({ handleChange, handleBlur, handleSubmit, values }) => (<StyledFormArea>
-                    <MyTextInput
-                        label="Email Address"
-                        icon="mail"
-                        placeholder="Example@gmail.com"
-                        placeholderTextColor={darklight}
-                        onChangeText={handleChange('email')}
-                        onBlur={handleBlur('email')}
-                        value={email}
-                        onChangeText={text => setEmail(text)}
-                        keyboardtype="email-address"
-                    />
 
-                    <MyTextInput
-                        label="Password"
-                        icon="lock"
-                        placeholder="* * * * * * * * "
-                        placeholderTextColor={darklight}
-                        onChangeText={handleChange('password')}
-                        onBlur={handleBlur('password')}
-                        value={password}
-                        onChangeText={text => setPassword(text)}
-                        secureTextEntry={hidePassword}
-                        isPassword={true}
-                        hidePassword={hidePassword}
-                        setHidePassword={setHidePassword}
-                    />
-                    <StyledBotton style={{
-                        marginTop: 100,
-                    }}>
-                        <ButtonText onPress={onLogin}>
-                            Login
-                        </ButtonText>
-                    </StyledBotton>
+                ><StyledFormArea>
+                        <MyTextInput
+                            label="Email Address"
+                            icon="mail"
+                            placeholder="Example@gmail.com"
+                            placeholderTextColor={darklight}
+                            value={email}
+                            onChangeText={text => setEmail(text)}
+                            keyboardtype="email-address"
+                        />
+                        <Line />
 
-                </StyledFormArea>)}
+                        <MyTextInput
+                            label="Password"
+                            icon="lock"
+                            placeholder="* * * * * * * * "
+                            placeholderTextColor={darklight}
+                            value={password}
+                            onChangeText={text => setPassword(text)}
+                            secureTextEntry={hidePassword}
+                            isPassword={true}
+                            hidePassword={hidePassword}
+                            setHidePassword={setHidePassword}
+                        />
+                        <Line />
+
+                        <StyledBotton style={{
+                            marginTop: 100,
+                        }} onPress={onLogin}>
+                            <ButtonText >
+                                Login
+                            </ButtonText>
+                        </StyledBotton>
+
+                        <MsgBox style={{ marginTop: 20 }}>Forgot Password ?</MsgBox>
+                        <MsgBox style={{ marginTop: 20 }}>Don't have an account ? </MsgBox>
+                        <MsgBox style={{ marginTop: 10, color: "blue" }}>Create Account</MsgBox>
+
+                    </StyledFormArea>
 
                 </Formik>
             </InnerContainer>

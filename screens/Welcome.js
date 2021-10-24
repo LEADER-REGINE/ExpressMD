@@ -12,24 +12,24 @@ import {
     StyledBotton,
     ButtonText,
     SubTitle,
-    StyledCreateBotton
+    StyledCreateBotton,
+    LoginButton,
 } from '../components/styles'
 import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './Login.js'
-
+import RegisterScreen from './Signup'
 function GoToButton({ screenName }) {
     const navigation = useNavigation();
 
     return (
         <ButtonText onPress={() => navigation.navigate(screenName)} >
-            Login
         </ButtonText>
     );
 }
 
 function WelcomeScreen() {
-
+    const navigation = useNavigation();
 
     return (
         <StyledContainer >
@@ -43,16 +43,12 @@ function WelcomeScreen() {
                 <PageTitle>Find Doctor Easier</PageTitle>
                 <Formik>{() => (
                     <StyledFormArea>
-                        <StyledBotton>
-                            <GoToButton screenName="LoginScreen" />
+                        <StyledBotton onPress={() => navigation.navigate("LoginScreen")}>
+                            <ButtonText>Login</ButtonText>
                         </StyledBotton>
-                        <StyledCreateBotton>
-                            <ButtonText>
-                                Create your account
-                            </ButtonText>
+                        <StyledCreateBotton onPress={() => navigation.navigate("RegisterScreen")}>
+                            <ButtonText>Create an Account</ButtonText>
                         </StyledCreateBotton>
-
-
                     </StyledFormArea>)}
 
                 </Formik>
@@ -71,6 +67,7 @@ function Welcome() {
         }}>
             <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
         </Stack.Navigator>
     );
 }
