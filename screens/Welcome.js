@@ -66,14 +66,12 @@ const Stack = createNativeStackNavigator();
 function Welcome() {
 
     return (
-        <NavigationContainer>
-            <Stack.Navigator initialRouteName="WelcomeScreen" screenOptions={{
-                headerShown: false
-            }}>
-                <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-                <Stack.Screen name="LoginScreen" component={LoginScreen} />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <Stack.Navigator initialRouteName="WelcomeScreen" screenOptions={{
+            headerShown: false
+        }}>
+            <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        </Stack.Navigator>
     );
 }
 

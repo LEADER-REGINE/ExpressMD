@@ -21,25 +21,35 @@ import {
 import { View } from 'react-native'
 //icons
 import { Octicons, Ionicons } from '@expo/vector-icons';
+import Firebase from '../config/firebase';
 
 const { brand, darklight } = Colors;
-
+const auth = Firebase.auth();
 const Login = () => {
 
     const [hidePassword, setHidePassword] = useState(true);
-
-
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const onLogin = async () => {
+        try {
+            if (email !== '' && password !== '') {
+                await auth.signInWithEmailAndPassword(email, password);
+            }
+        } catch (error) {
+            setLoginError(error.message);
+        }
+    };
     return (
         <StyledContainer>
             <StatusBar style="dark" />
             <InnerContainer style={{
-                
+
                 justifyContent: 'center',
                 alignItems: 'center',
                 flex: 0.5,
             }}>
                 <PageLogo resizeMode="cover" source={require('../assets/Untitled-1.png')} style={{
-                    
+
                 }} />
                 <PageTitle>Find Doctor Easier</PageTitle>
                 <SubTitle style={{
@@ -59,7 +69,8 @@ const Login = () => {
                         placeholderTextColor={darklight}
                         onChangeText={handleChange('email')}
                         onBlur={handleBlur('email')}
-                        value={values.email}
+                        value={email}
+                        onChangeText={text => setEmail(text)}
                         keyboardtype="email-address"
                     />
 
@@ -70,7 +81,8 @@ const Login = () => {
                         placeholderTextColor={darklight}
                         onChangeText={handleChange('password')}
                         onBlur={handleBlur('password')}
-                        value={values.password}
+                        value={password}
+                        onChangeText={text => setPassword(text)}
                         secureTextEntry={hidePassword}
                         isPassword={true}
                         hidePassword={hidePassword}
@@ -79,7 +91,7 @@ const Login = () => {
                     <StyledBotton style={{
                         marginTop: 100,
                     }}>
-                        <ButtonText>
+                        <ButtonText onPress={onLogin}>
                             Login
                         </ButtonText>
                     </StyledBotton>
