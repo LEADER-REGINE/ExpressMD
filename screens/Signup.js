@@ -20,13 +20,14 @@ import { View } from 'react-native'
 //icons
 import { Ionicons } from '@expo/vector-icons';
 
+import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import Firebase from '../config/firebase';
 
 const { brand, darklight } = Colors;
 const auth = Firebase.auth();
 
 const Signup = () => {
-
+    const navigation = useNavigation();
     const [hidePassword, setHidePassword] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -146,7 +147,7 @@ const Signup = () => {
                         </StyledBotton>
 
                         <MsgBox style={{ marginTop: 10 }}>Already have an account ? </MsgBox>
-                        <MsgBox style={{ marginTop: 10, color: "blue" }}>Login</MsgBox>
+                        <MsgBox style={{ marginTop: 10, color: "blue" }} onPress={() => navigation.navigate("LoginScreen")}>Login</MsgBox>
 
                     </StyledFormArea>
 
