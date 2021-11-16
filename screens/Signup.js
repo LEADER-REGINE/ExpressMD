@@ -138,7 +138,7 @@ const Signup = () => {
                             placeholder="01/01/2000"
                             placeholderTextColor={darklight}
                             value={birthdate}
-                            onChangeText={text => birthdate(text)}
+                            onChangeText={text => setbirthdate(text)}
                         />
                         <Line />
 
