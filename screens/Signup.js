@@ -25,6 +25,8 @@ import Firebase from '../config/firebase';
 
 const { brand, darklight } = Colors;
 const auth = Firebase.auth();
+const db = Firebase.firestore();
+
 
 const Signup = () => {
     const navigation = useNavigation();
@@ -32,11 +34,38 @@ const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmpassword, setconfirmPassword] = useState('');
+    const [fullname, setfullname] = useState('');
+    const [phoneNum, setphoneNum] = useState('');
+    const [gender, setgender] = useState('');
+    const [birthdate, setbirthdate] = useState('');
+    const [profilePic, setprofilePic] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhZNvTWjTSpH6CCYzLPxYkagOsGEZSrk5GMw&usqp=CAU');
+
+
+    const userInput = (prop) => (e) => {
+        setPayload({ ...payload, [prop]: e.target.value });
+    };
 
     const onHandleSignup = async () => {
         try {
             if (email !== '' && password !== '' && password === confirmpassword) {
-                await auth.createUserWithEmailAndPassword(email, password);
+                await auth.createUserWithEmailAndPassword(email, password).then((userCredential) => {
+                    var user = userCredential.user;
+                    db.collection("users")
+                        .doc(user.uid)
+                        .set({
+                            fullname: fullname,
+                            email: email,
+                            phoneNum: phoneNum,
+                            gender: gender,
+                            profilePic: profilePic,
+                            uid: user.uid,
+                        })
+                        .then((docRef) => { })
+                        .catch((error) => {
+                            console.error("Error adding document: ", error);
+                        });
+                }
+                );
             }
         } catch (error) {
             console.log(error.message);
@@ -67,11 +96,12 @@ const Signup = () => {
                 >
                     <StyledFormArea>
 
-                        {/* <MyTextInput style={{ marginTop: -10 }}
+                        <MyTextInput style={{ marginTop: -10 }}
                             label="Full Name"
                             placeholder="Juan Dela Cruz"
                             placeholderTextColor={darklight}
-
+                            value={fullname}
+                            onChangeText={text => setfullname(text)}
                         />
                         <Line />
 
@@ -79,9 +109,10 @@ const Signup = () => {
                             label="Phone Number"
                             placeholder="+639*********"
                             placeholderTextColor={darklight}
-
+                            value={phoneNum}
+                            onChangeText={text => setphoneNum(text)}
                         />
-                        <Line /> */}
+                        <Line />
 
                         <MyTextInput style={{ marginTop: -10 }}
                             label="Email Address"
@@ -93,21 +124,23 @@ const Signup = () => {
                         />
                         <Line />
 
-                        {/* <MyTextInput style={{ marginTop: -10 }}
+                        <MyTextInput style={{ marginTop: -10 }}
                             label="Gender"
                             placeholder="Male / Female"
                             placeholderTextColor={darklight}
-
+                            value={gender}
+                            onChangeText={text => setgender(text)}
                         />
                         <Line />
 
                         <MyTextInput style={{ marginTop: -10 }}
                             label="Birthday"
-                            placeholder="DD/MM/YY"
+                            placeholder="01/01/2000"
                             placeholderTextColor={darklight}
-
+                            value={birthdate}
+                            onChangeText={text => birthdate(text)}
                         />
-                        <Line /> */}
+                        <Line />
 
 
 

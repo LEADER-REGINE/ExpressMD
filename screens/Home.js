@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Text, View, Image, Button, TouchableOpacity } from 'react-native';
-
+import { Text, Image, Button, TouchableOpacity } from 'react-native';
+import { View } from 'styled-components/native'
 export default class Home extends React.Component {
     render() {
         return (
