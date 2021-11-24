@@ -5,8 +5,6 @@ import { Formik } from 'formik'
 import {
     StyledContainer,
     InnerContainer,
-    PageLogo,
-    PageTitle,
     SubTitle,
     StyledFormArea,
     StyledInputLabel,
@@ -17,7 +15,6 @@ import {
     ButtonText,
     MsgBox,
     Line,
-    LeftIcon
 } from '../components/styles'
 import { View } from 'react-native'
 //icons
@@ -41,19 +38,10 @@ const Login = () => {
         }
     };
     return (
-
         <StyledContainer>
             <StatusBar style="dark" />
-            <InnerContainer style={{
-
-                justifyContent: 'center',
-                alignItems: 'center',
-                flex: 0.5,
-            }}>
-                <SubTitle style={{
-                    marginTop: 10,
-                    marginBottom: 100,
-                }}>Login</SubTitle>
+            <InnerContainer>
+                <SubTitle>Login</SubTitle>
 
                 <Formik
                     initialValues={{ email: "", password: "", }}
@@ -84,9 +72,7 @@ const Login = () => {
                         />
                         <Line />
 
-                        <StyledBotton style={{
-                            marginTop: 100,
-                        }} onPress={onLogin}>
+                        <StyledBotton onPress={onLogin}>
                             <ButtonText >
                                 Login
                             </ButtonText>

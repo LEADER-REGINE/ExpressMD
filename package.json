@@ -24,13 +24,15 @@
     "formik": "^2.2.9",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-instantsearch-dom": "^6.15.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.4.0",
     "react-native-web": "~0.13.12",
     "style-components": "^0.1.0",
     "styled-components": "^5.3.3",
-    "typesense": "^1.0.2"
+    "typesense": "^1.0.2",
+    "typesense-instantsearch-adapter": "^2.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"

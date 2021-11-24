@@ -54,7 +54,7 @@ export const PageTitle = styled.Text`
 
 export const SubTitle = styled.Text`
     font-size : 50px ;
-    margin-top : 20px ;
+    margin-top : ${StatusBarHeight + 150}px;
     letter-spacing : 2px ;
     font-weight : 100 ;
     color : #808080;
@@ -63,6 +63,7 @@ export const SubTitle = styled.Text`
 
 export const StyledFormArea = styled.View`
     width : 90% ;
+    margin-top : 50px;
 
 `;
 
@@ -102,7 +103,7 @@ export const RightIcon = styled.TouchableOpacity`
 `;
 
 export const StyledBotton = styled.TouchableOpacity`
-    margin-top : 140px ;
+    margin-top : 50px ;
     padding : 15px ;
     background-color : ${button1};
     justify-content : center ;
