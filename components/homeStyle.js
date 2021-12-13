@@ -1,11 +1,13 @@
 import styled from 'styled-components'
-import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TextInput, TouchableOpacity,Dimensions} from 'react-native'
 import Constansts from 'expo-constants'
 
 
 const StatusBarHeight = Constansts.statusBarHeight;
+const { height, width} = Dimensions.get('window');
 
-export const View1 = styled.View`
+export const View1 = styled.View
+`
     flex-direction : column ; 
     height : 600px ;
 `

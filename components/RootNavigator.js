@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { View, ActivityIndicator } from 'react-native';
-
 import Firebase from '../config/firebase';
 import { AuthenticatedUserContext } from './AuthenticatedUserProvider';
 import Welcome from '../screens/Welcome';
@@ -38,6 +37,8 @@ export default function RootNavigator() {
     return (
         <NavigationContainer>
             {user ? <Main /> : <Welcome />}
+
+          
         </NavigationContainer>
     );
 }
